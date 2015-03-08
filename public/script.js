@@ -14,6 +14,13 @@ function setCanvasColor() {
 window.onload = function() {
   canvasArray = document.getElementsByClassName("box")
   
+  var save_button = document.getElementById("save-button")
+  save_button.addEventListener("click", function(e) {
+    e.preventDefault();
+    req.open("post", "http://localhost:4567/");
+    req.send();
+  });
+  
   var childrenOfColors = document.getElementsByClassName("colors")[0].childNodes;
   for (i = 0; i < childrenOfColors.length; i++) {
     if (childrenOfColors[i].tagName === "DIV") {
