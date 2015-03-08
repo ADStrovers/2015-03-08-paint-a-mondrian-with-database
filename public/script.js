@@ -1,6 +1,7 @@
 var colorArray = [];
 var canvasArray = [];
 var pointerColor = "white";
+var req = new XMLHttpRequest
 
 function setPointerColor() {
   pointerColor = this.className
