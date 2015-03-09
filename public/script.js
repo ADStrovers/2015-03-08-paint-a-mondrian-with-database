@@ -1,5 +1,6 @@
 var colorArray = [];
 var canvasArray = [];
+var saveCanvasArray = []
 var pointerColor = "white";
 var req = new XMLHttpRequest
 
@@ -8,7 +9,7 @@ function setPointerColor() {
 }
 
 function setCanvasColor() {
-  this.style.backgroundColor = pointerColor;
+  this.className = "box " + pointerColor;
 }
 
 window.onload = function() {
@@ -17,8 +18,14 @@ window.onload = function() {
   var save_button = document.getElementById("save-button")
   save_button.addEventListener("click", function(e) {
     e.preventDefault();
+    for (i = 0; i < canvasArray.length; i++) {
+      saveCanvasArray.push(canvasArray[i].className.slice(4));
+    }
+    var saveCanvasString = saveCanvasArray.join();
+    var formData = new FormData();
+    formData.append("saveString", saveCanvasString);
     req.open("post", "http://localhost:4567/");
-    req.send();
+    req.send(formData);
   });
   
   var childrenOfColors = document.getElementsByClassName("colors")[0].childNodes;

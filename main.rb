@@ -11,11 +11,3 @@ Dir["./database/*.rb"].each{ |file| require file }
 Dir["./controllers/*.rb"].each{ |file| require file }
 Dir["./views/*.rb"].each{ |file| require file }
 Dir["./models/*.rb"].each{ |file| require file }
-
-get "/" do
-  erb :landing
-end
-
-post "/" do
-  doc = Nokogiri::HTML(open("http://localhost:4567/"))
-end
