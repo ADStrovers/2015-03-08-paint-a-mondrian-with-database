@@ -1,4 +1,4 @@
-class Canvas
+class Canvas < ActiveRecord::Base
   attr_accessor :id, :saveString
   
   def initialize(options)
