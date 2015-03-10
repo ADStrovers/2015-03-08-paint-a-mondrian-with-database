@@ -19,7 +19,8 @@ window.onload = function() {
   save_button.addEventListener("click", function(e) {
     e.preventDefault();
     req.addEventListener("load", function() {
-      // var save_div = document.getElementById("save_div")  <-----------------------------------Here
+      var save_div = document.getElementsByClassName("save-output")[0]
+      save_div.innerHTML = req.response
     });
     for (i = 0; i < canvasArray.length; i++) {
       saveCanvasArray.push(canvasArray[i].className.slice(4));
