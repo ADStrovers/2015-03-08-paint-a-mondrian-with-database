@@ -1,10 +1,10 @@
 require 'sinatra'
 require 'pry'
-require 'nokogiri'
 require 'sqlite3'
 require 'json'
 require 'open-uri'
 require 'sinatra/activerecord'
+require 'bcrypt'
 
 DATABASE = SQLite3::Database.new("database.db")
 set :database, {adapter: "sqlite3", database: "database.db"}
