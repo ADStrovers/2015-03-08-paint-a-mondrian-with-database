@@ -51,47 +51,57 @@
 }
 
 .canvas > div {
-  height: 100px;
   width: auto;
 }
 
 .canvas > div > div {
   position: relative;
   display: inline-block;
-  width: 100px;
-  height: 100px;
 }
 
 body {
   text-align: center;
 }
 
-div[id^='row_1_'] {
+.row_1 {
+  height: 110px;
   border-top: 4px solid;
-  border-bottom: 4px solid; 
+  border-bottom: 4px solid;
 }
 
-div[id^='row_2_'] {
-  border-bottom: 4px solid;  
-}
-div[id^='row_3_'] {
-  border-bottom: 4px solid;  
+.row_2 {
+  height: 80px;
+  border-bottom: 4px solid;
 }
 
-div[id^='row_4_'] {
-  border-bottom: 4px solid;   
+.row_3 {
+  height: 120px;
+  border-bottom: 4px solid;
+}
+
+.row_4 {
+  height: 90px;
+  border-bottom: 4px solid;
 }
 
 div[id$="column_1"] {
   border-right: 4px solid;
+  width: 80px;
 }
 
 div[id$="column_2"] {
   border-right: 4px solid;
+  width: 110px;
 }
 
 div[id$="column_3"] {
   border-right: 4px solid;
+  width: 95px;
+}
+
+div[id$="column_4"] {
+  border-right: 4px solid;
+  width: 115px;
 }
 
 #save-button, .save-output {

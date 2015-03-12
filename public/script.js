@@ -9,7 +9,8 @@ function setPointerColor() {
 }
 
 function setCanvasColor() {
-  this.className = "box " + pointerColor;
+  var classNames = this.className.substring(0, 10)
+  this.className = classNames + pointerColor;
 }
 
 window.onload = function() {
