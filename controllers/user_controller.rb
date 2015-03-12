@@ -16,7 +16,7 @@ post "/validate" do
     session[:message] = "That is not a valid username.  Please try again."
     redirect to("/")
   else
-    if @obj.password == params["password"]
+    if BCrypt::Password.new(@obj.password) == params["password"]
       session[:user_id] = @obj.id
       session[:message] = "Welcome back #{params['username']}!"
       redirect to("/mondrian")
@@ -29,6 +29,8 @@ end
 
 post "/create" do
   if params["password"] == params["validate_password"]
+    params["password"] = BCrypt::Password.create(params["password"])
+    binding.pry
     @obj = User.create({username: params["username"], password: params["password"]})
     session[:user_id] = @obj.id
     redirect to("/mondrian")
