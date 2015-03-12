@@ -28,7 +28,7 @@ window.onload = function() {
     var saveCanvasString = saveCanvasArray.join();
     var formData = new FormData();
     formData.append("saveString", saveCanvasString);
-    req.open("post", "http://localhost:4567/");
+    req.open("post", "http://localhost:4567/mondrian");
     req.send(formData);
   });
   

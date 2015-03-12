@@ -1,5 +1,6 @@
 class Canvas < ActiveRecord::Base
   self.table_name = "canvases"
+  belongs_to :user
   
   # Excellent opportunity here to give rows/columns into each canvas item as part of the options hash.
   def ready_for_mondrian

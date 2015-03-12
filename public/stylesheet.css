@@ -42,20 +42,12 @@
   height: auto;
 }
 
-.canvas > div:first-child {
-  border-top: 2px solid;
-}
-
-.canvas > div:last-child {
-  border-bottom: 2px solid;
-}
-
 .canvas > div > div:first-child {
-  border-left: 2px solid;
+  border-left: 4px solid;
 }
 
 .canvas > div> div:last-child {
-  border-right: 2px solid;
+  border-right: 4px solid;
 }
 
 .canvas > div {
@@ -68,5 +60,40 @@
   display: inline-block;
   width: 100px;
   height: 100px;
-  border: 5px solid;
+}
+
+body {
+  text-align: center;
+}
+
+div[id^='row_1_'] {
+  border-top: 4px solid;
+  border-bottom: 4px solid; 
+}
+
+div[id^='row_2_'] {
+  border-bottom: 4px solid;  
+}
+div[id^='row_3_'] {
+  border-bottom: 4px solid;  
+}
+
+div[id^='row_4_'] {
+  border-bottom: 4px solid;   
+}
+
+div[id$="column_1"] {
+  border-right: 4px solid;
+}
+
+div[id$="column_2"] {
+  border-right: 4px solid;
+}
+
+div[id$="column_3"] {
+  border-right: 4px solid;
+}
+
+#save-button, .save-output {
+  margin-bottom: 10px;
 }

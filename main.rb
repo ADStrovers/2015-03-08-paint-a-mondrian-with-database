@@ -5,6 +5,12 @@ require 'json'
 require 'open-uri'
 require 'sinatra/activerecord'
 require 'bcrypt'
+require 'sinatra/partial'
+
+set :bind, '0.0.0.0'
+
+set :partial_template_engine, :erb
+enable :sessions
 
 DATABASE = SQLite3::Database.new("database.db")
 set :database, {adapter: "sqlite3", database: "database.db"}
