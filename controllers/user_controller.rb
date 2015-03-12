@@ -36,6 +36,7 @@ post "/create" do
     redirect to("/mondrian")
   else
     session[:message] = "Sorry.  The given passwords do not match.  Please try again."
+    redirect to("/signup")
   end
 end
 

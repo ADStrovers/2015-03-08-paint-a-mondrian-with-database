@@ -1,3 +1,5 @@
-<div class="message">
-  <%= @message unless @message.nil? %>
-</div>
+<% unless session[:message].nil? %>
+  <div class="message">
+    <%= session[:message] %><% session[:message] = nil %>
+  </div>
+<% end %>
