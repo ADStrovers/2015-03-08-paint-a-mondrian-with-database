@@ -30,7 +30,6 @@ end
 post "/create" do
   if params["password"] == params["validate_password"]
     params["password"] = BCrypt::Password.create(params["password"])
-    binding.pry
     @obj = User.create({username: params["username"], password: params["password"]})
     session[:user_id] = @obj.id
     redirect to("/mondrian")
