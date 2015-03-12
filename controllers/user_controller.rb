@@ -2,12 +2,12 @@ get "/" do
   if session[:user]
     redirect to("/mondrian")
   else
-    erb :"user/login", :layout => false
+    erb :"user/login", :layout => :"layouts/user_layout"
   end
 end
 
 get "/signup" do
-  erb :"user/signup", :layout => false
+  erb :"user/signup", :layout => :"layouts/user_layout"
 end
 
 post "/validate" do

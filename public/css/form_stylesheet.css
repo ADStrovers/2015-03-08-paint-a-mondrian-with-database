@@ -1,0 +1,19 @@
+* {
+  background-color: #FEE;
+  box-sizing: border-box;
+}
+
+form:first-child { 
+  margin-top: 20%;
+  text-align: center;
+}
+
+label, input {
+  display: block;
+  margin: auto;
+  margin-bottom: 5px;
+}
+
+input {
+  background-color: white;
+}
