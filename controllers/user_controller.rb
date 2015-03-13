@@ -1,13 +1,13 @@
 get "/" do
-  if session[:user]
+  if session[:user_id]
     redirect to("/mondrian")
   else
-    erb :"user/login", :layout => :"layouts/user_layout"
+    erb :"user/login", :layout => :"layouts/form_layout"
   end
 end
 
 get "/signup" do
-  erb :"user/signup", :layout => :"layouts/user_layout"
+  erb :"user/signup", :layout => :"layouts/form_layout"
 end
 
 post "/validate" do
@@ -41,5 +41,15 @@ end
 
 post "/signout" do
   session[:user_id] = nil
+  redirect to("/")
+end
+
+get "/valid" do
+  @obj = User.find_by(username: params["username"])
+  if @obj
+    session[:user_id] = @obj.id
+  else
+    session[:message] = "Sorry.  We could not log you in based on the given information.  Please try again."
+  end
   redirect to("/")
 end
