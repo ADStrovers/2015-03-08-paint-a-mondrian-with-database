@@ -6,6 +6,11 @@ before "/mondrian" do
 end
 
 get "/mondrian" do
+  rows = Row.where(canvas_id: @canvas.id)
+  @color_array = []
+  rows.each do |x|
+    @color_array += x.saveString.split(",")
+  end
   erb :"canvas/canvas_view"
 end
   
