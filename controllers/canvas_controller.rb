@@ -10,7 +10,7 @@ get "/mondrian" do
 end
   
 post "/mondrian" do
-  @rows = Rows.where(canvas_id: @canvas.id)
+  @rows = Row.where(canvas_id: @canvas.id)
   update_rows(@rows, params)
   "Canvas successfully saved."
 end
