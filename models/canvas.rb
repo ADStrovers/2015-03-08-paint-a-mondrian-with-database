@@ -4,7 +4,6 @@ class Canvas < ActiveRecord::Base
   has_many :rows
   
   def create_blank_canvas
-    binding.pry
     color_array = []
     i = 1
     number_of_columns.times { color_array << "white" }
@@ -14,7 +13,6 @@ class Canvas < ActiveRecord::Base
     end
   end  
   
-  # Excellent opportunity here to give rows/columns into each canvas item as part of the options hash.
   def ready_for_mondrian
     output = {}
     row_counter = 1

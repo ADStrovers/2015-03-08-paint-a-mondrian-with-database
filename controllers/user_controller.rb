@@ -40,7 +40,7 @@ post "/create" do
 end
 
 post "/signout" do
-  session[:user_id] = nil
+  session[:user_id], session[:canvas_id] = nil
   redirect to("/")
 end
 
