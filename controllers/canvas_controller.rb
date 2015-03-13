@@ -1,22 +1,30 @@
+before "/mondrian" do
+  @canvas = Canvas.find_by(id: session[:canvas_id]) || Canvas.find_by(user_id: session[:user_id])
+  if @canvas.nil?
+    redirect to("/mondrian/new")
+  end
+end
+
 get "/mondrian" do
   erb :"canvas/canvas_view"
+end
+  
+post "/mondrian" do
+  @rows = Rows.where(canvas_id: @canvas.id)
+  update_rows(@rows, params)
+  "Canvas successfully saved."
 end
 
 get "/mondrian/new" do
   erb :"canvas/canvas_new", :layout => :"layouts/form_layout"
-end
-  
-post "/mondrian" do
-  params["user_id"] = session[:user_id]
-  new_canvas = Canvas.create(params)
-  "Canvas successfully saved.  ID: #{new_canvas.id}."
 end
 
 post "/mondrian/create" do
   params["user_id"] = session[:user_id]
   @obj = Canvas.create(params)
   @obj.create_blank_canvas
-  redirect to("/mondrian/#{@obj.id}"), 307
+  session[:canvas_id] = @obj.id
+  redirect to("/mondrian")
 end
 
 post "/mondrian/:id" do

@@ -22,7 +22,6 @@ class Canvas < ActiveRecord::Base
     canvas_rows = Row.where(canvas_id: id)
     
     canvas_rows.each do |x|
-      binding.pry
       row_array = x.saveString.split(",")
       row_array.each do |x|
         while column_counter <= number_of_columns
@@ -33,7 +32,6 @@ class Canvas < ActiveRecord::Base
       column_counter = 1
       row_counter += 1
     end
-    binding.pry
     output
   end
 end

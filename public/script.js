@@ -16,22 +16,22 @@ function setCanvasColor() {
 window.onload = function() {
   canvasArray = document.getElementsByClassName("box")
   
-  var save_button = document.getElementById("save-button")
-  save_button.addEventListener("click", function(e) {
-    e.preventDefault();
-    req.addEventListener("load", function() {
-      var save_div = document.getElementsByClassName("save-output")[0]
-      save_div.innerHTML = req.response
-    });
-    for (i = 0; i < canvasArray.length; i++) {
-      saveCanvasArray.push(canvasArray[i].className.slice(4));
-    }
-    var saveCanvasString = saveCanvasArray.join();
-    var formData = new FormData();
-    formData.append("saveString", saveCanvasString);
-    req.open("post", "http://localhost:4567/mondrian");
-    req.send(formData);
-  });
+  // var save_button = document.getElementById("save-button")
+  // save_button.addEventListener("click", function(e) {
+  //   e.preventDefault();
+  //   req.addEventListener("load", function() {
+  //     var save_div = document.getElementsByClassName("save-output")[0]
+  //     save_div.innerHTML = req.response
+  //   });
+  //   for (i = 0; i < canvasArray.length; i++) {
+  //     saveCanvasArray.push(canvasArray[i].className.slice(4));
+  //   }
+  //   var saveCanvasString = saveCanvasArray.join();
+  //   var formData = new FormData();
+  //   formData.append("saveString", saveCanvasString);
+  //   req.open("post", "http://localhost:4567/mondrian/save");
+  //   req.send(formData);
+  // });
   
   var childrenOfColors = document.getElementsByClassName("colors")[0].childNodes;
   for (i = 0; i < childrenOfColors.length; i++) {
