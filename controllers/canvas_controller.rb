@@ -6,6 +6,7 @@ before "/mondrian" do
 end
 
 get "/mondrian" do
+  @user_canvases = Canvas.where(user_id: session[:user_id])
   rows = Row.where(canvas_id: @canvas.id)
   @color_array = []
   rows.each do |x|
@@ -33,7 +34,11 @@ post "/mondrian/create" do
 end
 
 post "/mondrian/:id" do
-  canvas = Canvas.find_by(id: params["id"])
-  canvas_hash = canvas.ready_for_mondrian
-  canvas_hash.to_json
+  @canvas = Canvas.find_by(id: params["id"])
+  rows = Row.where(canvas_id: @canvas.id)
+  @color_array = []
+  rows.each do |x|
+    @color_array += x.saveString.split(",")
+  end
+  canvas_create(@canvas.number_of_rows, @canvas.number_of_columns, @color_array)
 end

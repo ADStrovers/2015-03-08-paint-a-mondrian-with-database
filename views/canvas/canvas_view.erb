@@ -10,7 +10,8 @@
 </div>
 <div>
   <input type="submit" name="save" value="Save Your Mondrian" id="save-button">
-  <span class="new_mondrian_link">Not satisfied with this Mondrian? <a href="/mondrian/new">Create a new one!</a></span>
+  <%= load_button(@user_canvases) %>
+  <span class="new_mondrian_link"><a href="/mondrian/new">Create a New Modrian!</a></span>
   <div class="save-output"></div>
 </div>
 <div class="canvas">
