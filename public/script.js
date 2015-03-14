@@ -16,6 +16,7 @@ function setCanvasColor() {
 window.onload = function() {
   fullCanvasArray = document.getElementsByClassName("box")
   
+  // Save button functionality...  It's a monster.
   var save_button = document.getElementById("save-button")
   save_button.addEventListener("click", function(e) {
     e.preventDefault();
@@ -24,18 +25,19 @@ window.onload = function() {
       var save_div = document.getElementsByClassName("save-output")[0]
       save_div.innerHTML = req.response
     });
-    var columnDivList = []
-    var columnNodeList = document.getElementsByClassName("canvas")[0].childNodes;
-    for (i = 0; i < columnNodeList.length; i++) {
-      if (columnNodeList[i].tagName === "DIV") {
-        columnDivList.push(columnNodeList[i]);
+    var rowDivList = []
+    var rowNodeList = document.getElementsByClassName("canvas")[0].childNodes;
+    for (i = 0; i < rowNodeList.length; i++) {
+      if (rowNodeList[i].tagName === "DIV") {
+        rowDivList.push(rowNodeList[i]);
       };
     };
-    var numberOfRows = columnDivList.length;
+    var numberOfRows = rowDivList.length;
     var numberOfColumns = fullCanvasArray.length / numberOfRows;
     for (i = 0; i < numberOfRows; i++) {
       for (x = 0; x < numberOfColumns; x++) {
-        var position = i * numberOfRows + x;
+        var position = i * numberOfColumns + x;
+        console.log(position)
         saveRowArray.push(fullCanvasArray[position].className.slice(10));
       };
       var rowNumber = "row_" + (i + 1).toString();
@@ -45,6 +47,20 @@ window.onload = function() {
     };
     req.open("post", "http://localhost:4567/mondrian");
     req.send(formData);
+  });
+  
+  // Load button functionality
+  var load_button = document.getElementById("load-button");
+  load_button.addEventListener("click", function(e) {
+    e.preventDefault();
+    var load_value = document.getElementById("load-value").value;
+    req.addEventListener("load", function() {
+      var canvas_div = document.getElementsByClassName("canvas")[0];
+      canvas_div.innerHTML = req.response;
+    });
+    var url = "http://localhost:4567/mondrian/" + load_value.toString();
+    req.open("post", url);
+    req.send();
   });
   
   var childrenOfColors = document.getElementsByClassName("colors")[0].childNodes;

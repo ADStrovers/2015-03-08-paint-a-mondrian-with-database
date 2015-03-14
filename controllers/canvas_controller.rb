@@ -34,6 +34,7 @@ post "/mondrian/create" do
 end
 
 post "/mondrian/:id" do
+  session[:canvas_id] = params["id"]
   @canvas = Canvas.find_by(id: params["id"])
   rows = Row.where(canvas_id: @canvas.id)
   @color_array = []
