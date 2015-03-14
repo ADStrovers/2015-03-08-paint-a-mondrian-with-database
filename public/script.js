@@ -37,7 +37,6 @@ window.onload = function() {
     for (i = 0; i < numberOfRows; i++) {
       for (x = 0; x < numberOfColumns; x++) {
         var position = i * numberOfColumns + x;
-        console.log(position)
         saveRowArray.push(fullCanvasArray[position].className.slice(10));
       };
       var rowNumber = "row_" + (i + 1).toString();

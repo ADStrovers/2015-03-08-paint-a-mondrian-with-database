@@ -1,5 +1,19 @@
 module CanvasCreation
   
+  # Public: #canvas_create
+  # Iterates and creates the HTML for a mondrian based on passed in rows, columns, and colors given.
+  #
+  # Parameters:
+  # rows        - Integer: Number of rows in the given mondrian
+  # columns     - Integer: Number of columns in the given mondrian
+  # color_array - Array: An Array of strings containing the color class for all box's of the mondrian.
+  #
+  # Returns:
+  # A String containing the HTML to create the mondrian.
+  #
+  # State Changes:
+  # None
+  
   def canvas_create(rows, columns, color_array)
     row_counter = 1
     column_counter = 1
