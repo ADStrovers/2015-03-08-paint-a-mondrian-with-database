@@ -1,7 +1,7 @@
 var colorArray = [];
 var fullCanvasArray = [];
 var saveRowArray = [];
-var pointerColor = "white";
+var pointerColor = "color-1";
 var req = new XMLHttpRequest;
 
 function setPointerColor() {
@@ -9,7 +9,8 @@ function setPointerColor() {
 };
 
 function setCanvasColor() {
-  var classNames = this.className.substring(0, 10);
+  var classNamesMinusColor = this.className.length - 7;
+  var classNames = this.className.substring(0, classNamesMinusColor);
   this.className = classNames + pointerColor;
 };
 
@@ -44,7 +45,7 @@ window.onload = function() {
       formData.append(rowNumber, saveString);
       saveRowArray = []
     };
-    req.open("post", "http://localhost:4567/mondrian");
+    req.open("post", "mondrian");
     req.send(formData);
   });
   
@@ -57,7 +58,7 @@ window.onload = function() {
       var canvas_div = document.getElementsByClassName("canvas")[0];
       canvas_div.innerHTML = req.response;
     });
-    var url = "http://localhost:4567/mondrian/" + load_value.toString();
+    var url = "mondrian/" + load_value.toString();
     req.open("post", url);
     req.send();
   });

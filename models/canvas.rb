@@ -5,7 +5,7 @@ class Canvas < ActiveRecord::Base
   
   # Public: #create_blank_canvas
   # Creates a blank canvas based on the canvas's @number_of_rows and @number_of_columns.
-  # Automatically sets all boxes to white color to start.
+  # Automatically sets all boxes to color-1 code to start.
   #
   # Parameters:
   # None.
@@ -19,7 +19,7 @@ class Canvas < ActiveRecord::Base
   def create_blank_canvas
     color_array = []
     i = 1
-    number_of_columns.times { color_array << "white" }
+    number_of_columns.times { color_array << "color_1" }
     while i <= number_of_rows
       Row.create({canvas_id: id, saveString: color_array.join(",")})
       i += 1
