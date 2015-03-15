@@ -1,3 +1,4 @@
 class Row < ActiveRecord::Base
-  belongs_to: canvas
+  belongs_to :canvas
+  
 end

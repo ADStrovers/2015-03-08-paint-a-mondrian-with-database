@@ -25,7 +25,9 @@ class Canvas < ActiveRecord::Base
       i += 1
     end
     true
-  end  
+  end
+  
+end
   
 # => Currently obsoleted.  Was used for returning JSON.
 #
