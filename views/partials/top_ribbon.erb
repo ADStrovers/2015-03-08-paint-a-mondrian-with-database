@@ -1,3 +1,6 @@
 <form action="/signout" method="post">
-  <input type="submit" value="Sign Out" id="signout">
+  <div class="signout">
+    <span>Welcome Back, <%= @user.username %></span>
+    <input value="Sign Out" type="submit"> 
+  </div>
 </form>

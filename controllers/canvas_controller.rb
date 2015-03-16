@@ -1,5 +1,6 @@
 before "/mondrian" do
   @canvas = Canvas.find_by(id: session[:canvas_id]) || Canvas.find_by(user_id: session[:user_id])
+  @user = User.find(session[:user_id])
   if @canvas.nil?
     redirect to("/mondrian/new")
   end
