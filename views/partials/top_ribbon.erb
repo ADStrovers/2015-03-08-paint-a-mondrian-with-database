@@ -1,6 +1,8 @@
-<form action="/signout" method="post">
-  <div class="signout">
-    <span>Welcome Back, <%= @user.username %></span>
-    <input value="Sign Out" type="submit"> 
-  </div>
-</form>
+<nav>
+  <form action="/signout" class="inline" method="post">
+    <div class="signout">
+      <span>Welcome Back, <%= @user.username %></span>
+      <input value="Sign Out" type="submit"> 
+    </div>
+  </form>
+</nav>

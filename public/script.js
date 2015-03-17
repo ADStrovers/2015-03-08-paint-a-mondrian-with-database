@@ -2,7 +2,6 @@ var colorArray = [];
 var fullCanvasArray = [];
 var saveRowArray = [];
 var pointerColor = "color-1";
-var req = new XMLHttpRequest;
 
 function setPointerColor() {
   pointerColor = this.className;
@@ -19,8 +18,10 @@ window.onload = function() {
   
   // Save button functionality...  It's a monster.
   var save_button = document.getElementById("save-button")
+  var req = new XMLHttpRequest;
   save_button.addEventListener("click", function(e) {
     e.preventDefault();
+    req.open("post", "mondrian");
     var formData = new FormData();
     req.addEventListener("load", function() {
       var save_div = document.getElementsByClassName("save-output")[0]
@@ -45,22 +46,22 @@ window.onload = function() {
       formData.append(rowNumber, saveString);
       saveRowArray = []
     };
-    req.open("post", "mondrian");
     req.send(formData);
   });
   
   // Load button functionality
   var load_button = document.getElementById("load-button");
+  var req2 = new XMLHttpRequest;
   load_button.addEventListener("click", function(e) {
     e.preventDefault();
     var load_value = document.getElementById("load-value").value;
-    req.addEventListener("load", function() {
+    req2.addEventListener("load", function() {
       var canvas_div = document.getElementsByClassName("canvas")[0];
-      canvas_div.innerHTML = req.response;
+      canvas_div.innerHTML = req2.response;
     });
     var url = "mondrian/" + load_value.toString();
-    req.open("post", url);
-    req.send();
+    req2.open("post", url);
+    req2.send();
   });
   
   var childrenOfColors = document.getElementsByClassName("colors")[0].childNodes;
